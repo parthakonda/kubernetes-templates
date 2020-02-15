@@ -1,2 +1,3 @@
-# kubernetes-templates
-kubernetes templates scaffolding to get started quickly
+# kubernetes-ci-cd-templates
+
+This repo will consists of templates for all verities of pipelines and k8 templates.

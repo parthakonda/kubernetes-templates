@@ -1,0 +1,19 @@
+image: docker:stable
+
+services:
+  - docker:19.03.1-dind
+
+variables:
+  APP_NAME: app-admin-frontend
+  IMAGE_NAME: $CI_REGISTRY/parthakonda/app/app-admin-frontend:latest
+
+stages:
+  - test
+  - build_into_gitlab
+
+build_into_gitlab:
+  stage: build_into_gitlab
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE_NAME --build-arg VUE_APP_API_URL=$ADMIN_API_URL . 
+    - docker push $IMAGE_NAME

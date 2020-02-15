@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres
+data:
+  POSTGRES_DB: app
+  POSTGRES_USER: app
+  POSTGRES_PASSWORD: app
+  POSTGRES_PASS: app
+  ALLOW_IP_RANGE: 0.0.0.0/0
+  POSTGRES_MULTIPLE_EXTENSIONS: postgis,hstore,postgis_topology

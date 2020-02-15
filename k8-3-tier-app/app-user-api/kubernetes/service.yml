@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-user-api-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: app-user-api
+  ports:
+  - name: user-api-port
+    protocol: TCP
+    port: 9001
+    targetPort: 9001

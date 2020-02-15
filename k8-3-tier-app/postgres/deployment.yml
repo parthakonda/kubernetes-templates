@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: app-postgres
+spec:
+  serviceName: "postgres-service"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-postgres
+  template:
+    metadata:
+      labels:
+        app: app-postgres
+    spec:
+      containers:
+      - name: app-postgres
+        image: kartoza/postgis:12.0
+        ports:
+        - containerPort: 5432
+        envFrom:
+          - configMapRef:
+              name: postgres
